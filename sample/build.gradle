@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: io.github.dagezi.ninepatch.plugin.NinePatchPlugin
 
 android {
     compileSdkVersion 23
@@ -17,6 +18,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+ninepatch {
 }
 
 dependencies {

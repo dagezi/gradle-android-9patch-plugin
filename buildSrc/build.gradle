@@ -1,0 +1,26 @@
+final REPOSITORY_URL = 'https://github.com/dagezi/gradle-android-9patch-plugin'
+
+final GROUP_ID = 'io.github.dagezi.ninepatch'
+final ARTIFACT_ID = 'plugin'
+final VERSION = '0.0.0'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'groovy'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'com.android.tools.build:gradle:1.2.3'
+}
