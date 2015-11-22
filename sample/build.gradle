@@ -21,6 +21,14 @@ android {
 }
 
 ninepatch {
+    testPng {
+        stretch 3, 4
+        stretch 8, 9
+    }
+    testPng2 {
+        stretch 4, -4
+        padding 2, -2
+    }
 }
 
 dependencies {
