@@ -21,7 +21,7 @@ android {
 }
 
 ninepatch {
-    testPng {
+    round_rect {
         stretch 3, 4
         stretch 8, 9
     }
