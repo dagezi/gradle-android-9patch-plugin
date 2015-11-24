@@ -22,12 +22,15 @@ android {
 
 ninepatch {
     round_rect {
-        stretch 3, 4
-        stretch 8, 9
+        vStretch 8, 32
+        hStretch 8, 32
+        vPadding 7, 33
+        hPadding 7, 33
     }
+
     testPng2 {
-        stretch 4, -4
-        padding 2, -2
+        vStretch 8, 32
+        hStretch 8, 32
     }
 }
 

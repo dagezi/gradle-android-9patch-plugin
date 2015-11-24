@@ -22,9 +22,6 @@ public class NinePatchPlugin implements Plugin<Project> {
                         "Not an Android application; you forget `apply plugin: 'com.android.application`?")
             }
             Set<NinePatch> config = project.extensions.findByName('ninepatch')
-            config.each { ninePatch ->
-               println "name: ${ninePatch.name}, stretchables: ${ninePatch.stretchables}"
-            }
 
             def tasks = new ArrayList<Task>();
 

@@ -1,5 +1,6 @@
 package io.github.dagezi.ninepatch;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -56,15 +57,45 @@ public class NinePatchCreator {
     }
 
     public void create() throws IOException {
-        // TODO: process
+        if (ninePatch.hStretch.isEmpty()) {
+            throw new IllegalArgumentException("At least one hStream must be specified");
+        }
+        if (ninePatch.vStretch.isEmpty()) {
+            throw new IllegalArgumentException("At least one vStream must be specified");
+        }
 
         int width = inputImage.getWidth();
         int height = inputImage.getHeight();
         outputImage = new BufferedImage(width + 2, height + 2,
                 BufferedImage.TYPE_INT_ARGB);
         Graphics2D graphics = outputImage.createGraphics();
-
         graphics.drawImage(inputImage, 1, 1, null);
+
+        graphics.setColor(Color.black);
+        for (NinePatch.Range origRange : ninePatch.vStretch) {
+            NinePatch.Range range = origRange.clone();
+            range.zoom(zoom);
+            range.ensure(height);
+            graphics.drawLine(0, range.from + 1, 0, range.to);
+        }
+        for (NinePatch.Range origRange : ninePatch.hStretch) {
+            NinePatch.Range range = origRange.clone();
+            range.zoom(zoom);
+            range.ensure(width);
+            graphics.drawLine(range.from + 1, 0, range.to, 0);
+        }
+        if (ninePatch.vPadding != null) {
+            NinePatch.Range range = ninePatch.vPadding.clone();
+            range.zoom(zoom);
+            range.ensure(height);
+            graphics.drawLine(width + 1, range.from + 1, width + 1, range.to);
+        }
+        if (ninePatch.hPadding != null) {
+            NinePatch.Range range = ninePatch.hPadding.clone();
+            range.zoom(zoom);
+            range.ensure(width);
+            graphics.drawLine(range.from + 1, height + 1, range.to, height + 1);
+        }
 
         outputFile.getParentFile().mkdirs();
         ImageIO.write(outputImage, "png", outputFile);
