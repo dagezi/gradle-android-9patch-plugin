@@ -4,10 +4,26 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
 public class NinePatchCreator {
+    static final Pattern DPI_PATTERN = Pattern.compile("[a-z]+dpi");
+    static final Map<String, Double> STRING_DPI_MAP = new HashMap<String, Double>() {
+        {
+            put("ldpi", 0.75);
+            put("mdpi", 1.0);
+            put("hdpi", 1.5);
+            put("xhdpi", 2.0);
+            put("xxhdpi", 3.0);
+            put("xxxhdpi", 4.0);
+        }
+    };
+
     final NinePatch ninePatch;
     final File inputFile;
     final File outputDir;
@@ -17,7 +33,7 @@ public class NinePatchCreator {
     File outputFile;
     BufferedImage outputImage;
 
-    double zoom;
+    double zoom = 1.0;
 
     public NinePatchCreator(NinePatch ninePatch, File inputFile, File outputDir)
             throws IOException {
@@ -30,8 +46,13 @@ public class NinePatchCreator {
     }
 
     private void init() {
-        outputFile = new File(outputDir, String.format("%s.9.png", ninePatch.name));
-        zoom = 1.0; // TODO: extract from inputFile
+        String parentDirName = inputFile.getParentFile().getName();
+        Matcher matcher = DPI_PATTERN.matcher(parentDirName);
+        if (matcher.find()) {
+            zoom = STRING_DPI_MAP.get(matcher.group());
+        }
+        outputFile = new File(outputDir,
+                String.format("%s/%s.9.png", parentDirName, ninePatch.name));
     }
 
     public void create() throws IOException {

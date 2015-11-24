@@ -4,7 +4,6 @@ import com.android.build.gradle.AppExtension
 import com.android.build.gradle.api.ApplicationVariant
 import io.github.dagezi.ninepatch.NinePatch
 
-import groovy.transform.CompileStatic
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
@@ -39,6 +38,12 @@ public class NinePatchPlugin implements Plugin<Project> {
                 task.outputDir = generatedResDir
                 task.ninePatches = config
                 tasks.add(task)
+
+                def generateResources = project.
+                        getTasksByName("generate${capitalize(variant.name)}Resources", false)
+                generateResources.forEach { Task t ->
+                    t.dependsOn(task)
+                }
             }
 
             project.task(NinePatchTask.NAME, dependsOn: tasks);
