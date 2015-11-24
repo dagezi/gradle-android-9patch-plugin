@@ -1,13 +1,12 @@
 package io.github.dagezi.gradle_android_9patch_plugin;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,14 +17,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        View imageView = findViewById(R.id.image_100x200);
+
+        TextView textView = (TextView) findViewById(R.id.text);
+        textView.setText(String.format("dpi:%1.2f, L:%d R:%d T:%d B:%d",
+                getResources().getDisplayMetrics().density,
+                imageView.getPaddingLeft(),
+                imageView.getPaddingRight(),
+                imageView.getPaddingTop(),
+                imageView.getPaddingBottom()));
     }
 
     @Override

@@ -9,6 +9,16 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main" tools:context=".MainActivity">
 
-    <TextView android:text="Hello World!" android:layout_width="wrap_content"
+    <ImageButton
+        android:id="@+id/image_100x200"
+        android:src="@android:color/white"
+        android:background="@drawable/round_rect"
+        android:layout_width="100dp"
+        android:layout_height="200dp" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 </RelativeLayout>
