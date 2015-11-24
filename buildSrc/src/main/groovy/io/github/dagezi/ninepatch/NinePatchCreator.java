@@ -1,5 +1,6 @@
 package io.github.dagezi.ninepatch;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -35,8 +36,16 @@ public class NinePatchCreator {
 
     public void create() throws IOException {
         // TODO: process
+
+        int width = inputImage.getWidth();
+        int height = inputImage.getHeight();
+        outputImage = new BufferedImage(width + 2, height + 2,
+                BufferedImage.TYPE_INT_ARGB);
+        Graphics2D graphics = outputImage.createGraphics();
+
+        graphics.drawImage(inputImage, 1, 1, null);
+
         outputFile.getParentFile().mkdirs();
-        outputImage = inputImage;
         ImageIO.write(outputImage, "png", outputFile);
     }
 }
