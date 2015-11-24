@@ -3,6 +3,7 @@ package io.github.dagezi.ninepatch.plugin
 import com.android.build.gradle.api.ApplicationVariant
 import com.android.builder.model.SourceProvider
 import io.github.dagezi.ninepatch.NinePatch
+import io.github.dagezi.ninepatch.NinePatchCreator
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 
@@ -36,7 +37,9 @@ public class NinePatchTask extends DefaultTask {
                         dir: resDir,
                         include: "drawable*/${ninePatch.name}.png",
                 ).forEach { File inputFile ->
-                    println "process $inputFile"
+                    NinePatchCreator creator = new NinePatchCreator(
+                            ninePatch, inputFile, outputDir)
+                    creator.create()
                 }
             }
         }
