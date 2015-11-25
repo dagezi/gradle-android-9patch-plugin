@@ -1,0 +1,16 @@
+// You can extract 9patch setting here
+
+ninepatch {
+    round_rect {
+        vStretch 8, 32  // row 8 to 31 will stretch. Note that end exclusive.
+        hStretch 8, -8  // Negative value specifies the distance from end
+        vPadding 7, 33
+        hPadding 7, -7
+    }
+
+    testPng2 {
+        vStretch 8, 32
+        hStretch 8, 32
+    }
+}
+

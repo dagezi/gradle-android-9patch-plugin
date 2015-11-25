@@ -20,19 +20,7 @@ android {
     }
 }
 
-ninepatch {
-    round_rect {
-        vStretch 8, 32
-        hStretch 8, 32
-        vPadding 7, 33
-        hPadding 7, 33
-    }
-
-    testPng2 {
-        vStretch 8, 32
-        hStretch 8, 32
-    }
-}
+apply from: 'ninepatch.gradle'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
