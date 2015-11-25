@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main" tools:context=".MainActivity">
 
-    <ImageButton
-        android:id="@+id/image_100x200"
+    <TextView
+        android:id="@+id/text_200x100"
         android:src="@android:color/white"
         android:background="@drawable/round_rect"
-        android:layout_width="100dp"
-        android:layout_height="200dp" />
+        android:layout_width="200dp"
+        android:layout_height="100dp" />
 
     <TextView
-        android:id="@+id/text"
+        android:text="You can specify more than one stretch area.
+By adjusting the length of areas, you can specify &quot;stretchability&quot;.
+In this example, the callout stays upper than the center because
+the lower area is doubly strechable than the upper area.
+"
+        android:background="@drawable/balloon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-</RelativeLayout>
+        android:layout_height="match_parent" />
+</LinearLayout>

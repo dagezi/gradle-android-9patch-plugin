@@ -4,8 +4,20 @@ ninepatch {
     round_rect {
         vStretch 8, 32  // row 8 to 31 will stretch. Note that end exclusive.
         hStretch 8, -8  // Negative value specifies the distance from end
-        vPadding 7, 33
+        vPadding 7, 33  // Bad example. Use even number to avoid error for 'hdpi'
         hPadding 7, -7
+    }
+
+    // You can specify more than one stretch area.
+    // By adjusting the length of areas, you can specify "stretchability".
+    // In this example, the callout stays upper than the center because
+    // the lower area is doubly strechable than the upper area.
+    balloon {
+        vStretch 10, 12
+        vStretch 30, 34
+        hStretch 12, 32
+        vPadding 8, -8
+        hPadding 10, -8
     }
 
     testPng2 {

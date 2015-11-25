@@ -17,15 +17,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        View imageView = findViewById(R.id.image_100x200);
+        TextView textView = (TextView) findViewById(R.id.text_200x100);
 
-        TextView textView = (TextView) findViewById(R.id.text);
         textView.setText(String.format("dpi:%1.2f, L:%d R:%d T:%d B:%d",
                 getResources().getDisplayMetrics().density,
-                imageView.getPaddingLeft(),
-                imageView.getPaddingRight(),
-                imageView.getPaddingTop(),
-                imageView.getPaddingBottom()));
+                textView.getPaddingLeft(),
+                textView.getPaddingRight(),
+                textView.getPaddingTop(),
+                textView.getPaddingBottom()));
     }
 
     @Override
