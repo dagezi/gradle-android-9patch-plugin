@@ -1,5 +1,7 @@
 # gradle-android-9patch-plugin
 
+[<img src="https://circleci.com/gh/dagezi/gradle-android-9patch-plugin/tree/master.svg?style=shield&circle-token=551b03450b0b31a10d964fc38f693d3dc06f9f77">](https://circleci.com/gh/dagezi/gradle-android-9patch-plugin/tree/master)
+
 ## What's this?
 With this plugin, you can programatically create 9patch PNG files from normal PNG files, Instead of manually edit PNG file to create 9patch!
 
