@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: io.github.dagezi.ninepatch.plugin.NinePatchPlugin
+apply plugin: 'io.github.dagezi.ninepatch'
 
 android {
     compileSdkVersion 23
