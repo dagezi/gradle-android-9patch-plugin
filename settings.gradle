@@ -1,1 +1,2 @@
-include ':sample', ':buildSrc'
+include ':plugin'
+include ':sample'
