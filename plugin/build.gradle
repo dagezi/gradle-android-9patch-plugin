@@ -34,6 +34,15 @@ dependencies {
     compile 'com.android.tools.build:gradle:1.2.3'
 }
 
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+artifacts {
+    archives sourcesJar
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -41,6 +50,10 @@ publishing {
             groupId GROUP_ID
             artifactId ARTIFACT_ID
             version VERSION
+
+            artifact sourcesJar {
+                classifier "sources"
+            }
         }
     }
 }
