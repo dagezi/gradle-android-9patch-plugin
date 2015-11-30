@@ -48,12 +48,15 @@ public class NinePatchCreator {
 
     private void init() {
         String parentDirName = inputFile.getParentFile().getName();
+        String basename = inputFile.getName();
+        String imageName = basename.substring(0, basename.lastIndexOf('.'));
+
         Matcher matcher = DPI_PATTERN.matcher(parentDirName);
         if (matcher.find()) {
             zoom = STRING_DPI_MAP.get(matcher.group());
         }
         outputFile = new File(outputDir,
-                String.format("%s/%s.9.png", parentDirName, ninePatch.name));
+                String.format("%s/%s.9.png", parentDirName, imageName));
     }
 
     public void create() throws IOException {
