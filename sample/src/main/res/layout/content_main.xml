@@ -27,5 +27,15 @@ the lower area is doubly strechable than the upper area.
 "
         android:background="@drawable/balloon"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="0.6" />
+
+    <TextView
+        android:text="This is another 9patch generated with same parameter."
+        android:background="@drawable/balloon_red"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:layout_margin="20dp"/>
+
 </LinearLayout>

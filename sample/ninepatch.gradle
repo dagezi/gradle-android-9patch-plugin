@@ -8,14 +8,22 @@ ninepatch {
         hPadding 7, -7
     }
 
-    // You can specify more than one stretch area.
-    // By adjusting the length of areas, you can specify "stretchability".
-    // In this example, the callout stays upper than the center because
-    // the lower area is doubly strechable than the upper area.
     balloon {
+        // You can apply same settings for many images by `src`.
+        // If images are specified, name of this closure will be ignored.
+
+        src 'balloon'
+        src 'balloon_red'
+
+        // You can specify more than one stretch area.
+        // By adjusting the length of areas, you can specify "stretchability".
+        // In this example, the callout stays upper than the center because
+        // the lower area is doubly strechable than the upper area.
+
         vStretch 10, 12
         vStretch 30, 34
         hStretch 12, 32
+
         vPadding 8, -8
         hPadding 10, -8
     }
