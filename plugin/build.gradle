@@ -23,7 +23,7 @@ final REPOSITORY_URL = 'https://github.com/dagezi/gradle-android-9patch-plugin'
 
 final GROUP_ID = 'io.github.dagezi.ninepatch'
 final ARTIFACT_ID = 'plugin'
-final VERSION = '0.0.1'
+final VERSION = '0.0.2'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
