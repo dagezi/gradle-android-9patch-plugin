@@ -26,6 +26,7 @@ public class NinePatch {
     }
 
     public String name
+    public List<String> srcs = []
     public List<Range> vStretch = []
     public List<Range> hStretch = []
 
@@ -52,5 +53,12 @@ public class NinePatch {
         vPadding = new Range(from: from, to: to)
     }
 
+    public void src(String src) {
+        srcs << src
+    }
+
+    public List<String> getSrcs() {
+        return srcs.isEmpty() ? [name] : srcs
+    }
 }
 

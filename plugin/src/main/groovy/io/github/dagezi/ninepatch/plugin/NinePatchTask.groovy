@@ -35,7 +35,7 @@ public class NinePatchTask extends DefaultTask {
             ninePatches.forEach { NinePatch ninePatch ->
                 project.fileTree(
                         dir: resDir,
-                        include: "drawable*/${ninePatch.name}.png",
+                        include: (ninePatch.getSrcs().collect {"drawable*/${it}.png"}),
                 ).forEach { File inputFile ->
                     NinePatchCreator creator = new NinePatchCreator(
                             ninePatch, inputFile, outputDir)
