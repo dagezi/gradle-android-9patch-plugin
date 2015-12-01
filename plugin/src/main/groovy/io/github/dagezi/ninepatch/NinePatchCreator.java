@@ -61,10 +61,10 @@ public class NinePatchCreator {
 
     public void create() throws IOException {
         if (ninePatch.hStretch.isEmpty()) {
-            throw new IllegalArgumentException("At least one hStream must be specified");
+            throw new IllegalArgumentException("At least one hStretch must be specified");
         }
         if (ninePatch.vStretch.isEmpty()) {
-            throw new IllegalArgumentException("At least one vStream must be specified");
+            throw new IllegalArgumentException("At least one vStretch must be specified");
         }
 
         int width = inputImage.getWidth();
