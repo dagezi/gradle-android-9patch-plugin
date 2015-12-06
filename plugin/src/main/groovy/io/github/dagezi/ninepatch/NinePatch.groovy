@@ -10,6 +10,9 @@ public class NinePatch {
         }
 
         public void ensure(int max) {
+            if (from < 0) {
+                from += max;
+            }
             if (to < 0) {
                 to += max;
             }
@@ -26,6 +29,8 @@ public class NinePatch {
     }
 
     public String name
+    public Integer width
+    public Integer height
     public List<String> srcs = []
     public List<Range> vStretch = []
     public List<Range> hStretch = []
@@ -37,20 +42,31 @@ public class NinePatch {
         this.name = name
     }
 
+    public void pngSize(int width, int height) {
+        this.width = width
+        this.height = height
+    }
+
     public void hStretch(int from, int to) {
-        hStretch << new Range(from: from, to: to)
+        def range = new Range(from: from, to: to)
+        if (width) range.ensure(width)
+        hStretch << range
     }
 
     public void vStretch(int from, int to) {
-        vStretch << new Range(from: from, to: to)
+        def range = new Range(from: from, to: to)
+        if (height) range.ensure(height)
+        vStretch << range
     }
 
     public void hPadding(int from, int to) {
         hPadding = new Range(from: from, to: to)
+        if (width) hPadding.ensure(width)
     }
 
     public void vPadding(int from, int to) {
         vPadding = new Range(from: from, to: to)
+        if (height) vPadding.ensure(height)
     }
 
     public void src(String src) {
@@ -61,4 +77,3 @@ public class NinePatch {
         return srcs.isEmpty() ? [name] : srcs
     }
 }
-

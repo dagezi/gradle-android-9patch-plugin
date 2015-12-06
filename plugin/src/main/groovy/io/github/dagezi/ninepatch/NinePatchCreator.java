@@ -69,6 +69,10 @@ public class NinePatchCreator {
 
         int width = inputImage.getWidth();
         int height = inputImage.getHeight();
+
+        ensure("width", width, ninePatch.width);
+        ensure("height", height, ninePatch.height);
+
         outputImage = new BufferedImage(width + 2, height + 2,
                 BufferedImage.TYPE_INT_ARGB);
         Graphics2D graphics = outputImage.createGraphics();
@@ -102,5 +106,16 @@ public class NinePatchCreator {
 
         outputFile.getParentFile().mkdirs();
         ImageIO.write(outputImage, "png", outputFile);
+    }
+
+    private void ensure(String axis, int actual, Integer expected) {
+        if (expected != null) {
+            int expectedPx = (int) (expected * zoom);
+            if (expectedPx != actual) {
+                throw new IllegalArgumentException(
+                        String.format("The %s of %s, %d px, doesn't match with expected value %d",
+                                      axis, inputFile, actual, expectedPx));
+            }
+        }
     }
 }
