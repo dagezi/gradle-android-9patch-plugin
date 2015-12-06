@@ -9,6 +9,9 @@ ninepatch {
     }
 
     balloon {
+        // You can optionally specify the size of PNG in DP to ensure integrity.
+        pngSize 40, 40
+
         // You can apply same settings for many images by `src`.
         // If images are specified, name of this closure will be ignored.
 
