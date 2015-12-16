@@ -24,7 +24,7 @@ ninepatch {
         // the lower area is doubly strechable than the upper area.
 
         vStretch 10, 12
-        vStretch 30, 34
+        vStretch 24, 28
         hStretch 12, 32
 
         vPadding 8, -8
