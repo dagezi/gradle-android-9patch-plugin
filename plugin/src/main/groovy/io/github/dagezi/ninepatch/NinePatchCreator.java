@@ -113,8 +113,8 @@ public class NinePatchCreator {
             int expectedPx = (int) (expected * zoom);
             if (expectedPx != actual) {
                 throw new IllegalArgumentException(
-                        String.format("The %s of %s, %d px, doesn't match with expected value %d",
-                                      axis, inputFile, actual, expectedPx));
+                        String.format("The %s, %d px, doesn't match with expected value %d",
+                                      axis, actual, expectedPx));
             }
         }
     }

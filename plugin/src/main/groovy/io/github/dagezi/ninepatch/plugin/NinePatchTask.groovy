@@ -21,6 +21,7 @@ public class NinePatchTask extends DefaultTask {
 
     @TaskAction
     public void run() {
+        def errors = false
         variant.sourceSets.stream()
                 .flatMap(new Function<SourceProvider, Stream>() {
 
@@ -39,9 +40,17 @@ public class NinePatchTask extends DefaultTask {
                 ).forEach { File inputFile ->
                     NinePatchCreator creator = new NinePatchCreator(
                             ninePatch, inputFile, outputDir)
-                    creator.create()
+                    try {
+                        creator.create()
+                    } catch (IllegalArgumentException ex) {
+                        logger.error(ex.getMessage() + ':' + inputFile)
+                        errors = true
+                    }
                 }
             }
+        }
+        if (errors) {
+            throw new RuntimeException("Some errors in ninepatch")
         }
     }
 }
